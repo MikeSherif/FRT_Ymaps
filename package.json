@@ -1,7 +1,7 @@
 {
-  "author": "Morozov Andrey <alt-j@yandex-team.ru>",
+  "author": "Shervashidze Micheal <mike.fury315@gmail.com>",
   "name": "Heatmap",
-  "description": "Heatmap module for API Yandex.Maps",
+  "description": "Heatmap for FRT",
   "version": "0.0.1",
   "main": "build/heatmap.js",
   "homepage": "https://github.com/yandex/mapsapi-heatmap",
