@@ -64,14 +64,15 @@
             // Градиент для тепловой карты
             var gradient = {
                 0.0: 'rgba(0, 255, 0, 0.7)',   // Зелёный
-                0.5: 'rgba(255, 255, 0, 0.7)', // Жёлтый
-                1.0: 'rgba(255, 0, 0, 0.7)'    // Красный
+                0.3: 'rgba(255, 255, 0, 0.7)', // Жёлтый
+                1.0: 'rgba(255, 0, 0, 1)'    // Красный
             };
 
             // Создание тепловой карты
             ymaps.modules.require(['Heatmap'], function (Heatmap) {
                 var heatmap = new Heatmap(data, {
                     gradient: gradient,
+                    dissipating: false
                 });
                 heatmap.setMap(myMap);
                 heatmap.options.set('radius', 50); // Радиус тепловых зон
