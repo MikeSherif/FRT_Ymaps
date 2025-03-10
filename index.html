@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Heatmap with Grouped Points in Moscow</title>
+    <title>Тепловая карта и маркеры аварийных зданий</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=79f8b6a1-0321-48e8-8787-51a22797dd29&lang=en_US" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=79f8b6a1-0321-48e8-8787-51a22797dd29&lang=ru_RU" type="text/javascript"></script>
     <script src="https://yastatic.net/s3/mapsapi-jslibs/heatmap/0.0.1/heatmap.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         ymaps.ready(init);
         function init() {
-            // Инициализация карты
             var myMap = new ymaps.Map("map", {
-                center: [55.76, 37.64], // Центр Москвы
-                zoom: 10 // Увеличение для лучшего обзора
+                center: [55.76, 37.64], // Центр карты (Москва)
+                zoom: 10
             });
 
-            // Объекты
-            var objects = [
-                { coordinates: [55.7558, 37.6173] },
-                { coordinates: [55.7558, 37.6173] }, // 2 объекта
-                { coordinates: [55.7415, 37.6156] },
-                { coordinates: [55.7580, 37.6300] },
-                { coordinates: [55.7580, 37.6300] },
-                { coordinates: [55.7580, 37.6300] }, // 3 объекта
-                { coordinates: [55.7485, 37.6090] },
-                { coordinates: [55.7630, 37.6200] },
-                { coordinates: [55.7520, 37.6100] },
-                { coordinates: [55.7700, 37.6300] }
+            // Данные об аварийных зданиях
+            var buildings = [
+                { coordinates: [55.7558, 37.6173], name: "Здание 1", repairCost: "100 000 руб." },
+                { coordinates: [55.7558, 37.6173], name: "Здание 2", repairCost: "120 000 руб." }, // Дубликат координат
+                { coordinates: [55.7558, 37.6154], name: "Здание 6", repairCost: "400 000 руб." },
+                { coordinates: [55.7558, 37.6136], name: "Здание 6", repairCost: "800 000 руб." },
+                { coordinates: [55.7558, 37.6137], name: "Здание 6", repairCost: "800 000 руб." },
+                { coordinates: [55.7558, 37.6138], name: "Здание 6", repairCost: "800 000 руб." },
+                { coordinates: [55.7558, 37.6139], name: "Здание 6", repairCost: "800 000 руб." },
+                { coordinates: [55.7415, 37.6156], name: "Здание 3", repairCost: "150 000 руб." },
+                { coordinates: [55.7580, 37.6300], name: "Здание 4", repairCost: "200 000 руб." },
+                { coordinates: [55.7580, 37.6300], name: "Здание 5", repairCost: "180 000 руб." }
             ];
 
-            // Группировка по координатам
+            // Группировка для тепловой карты
             var groups = {};
-            objects.forEach(obj => {
-                var key = obj.coordinates.join(','); //группа определяется по одинаковой широте
+            buildings.forEach(building => {
+                var key = building.coordinates.join(',');
                 if (!groups[key]) {
                     groups[key] = 1;
                 } else {
@@ -40,14 +39,14 @@
                 }
             });
 
-            // Создание данных для тепловой карты
+            // Данные для тепловой карты
             var data = {
                 type: 'FeatureCollection',
                 features: []
             };
             for (var key in groups) {
                 var count = groups[key];
-                var weight = Math.min(count, 3); // 1, 2 или 3
+                var weight = Math.min(count, 3); // Ограничиваем вес до 3
                 var coordinates = key.split(',').map(Number);
                 data.features.push({
                     type: 'Feature',
@@ -62,7 +61,7 @@
                 feature.properties.weight = feature.properties.weight / maxWeight;
             });
 
-            // Градиент: зелёный (1), жёлтый (2), красный (3+)
+            // Градиент для тепловой карты
             var gradient = {
                 0.0: 'rgba(0, 255, 0, 0.7)',   // Зелёный
                 0.5: 'rgba(255, 255, 0, 0.7)', // Жёлтый
@@ -72,10 +71,21 @@
             // Создание тепловой карты
             ymaps.modules.require(['Heatmap'], function (Heatmap) {
                 var heatmap = new Heatmap(data, {
-                    gradient: gradient
+                    gradient: gradient,
                 });
                 heatmap.setMap(myMap);
-                heatmap.options.set('radius', 50); // Радиус теплового пятна
+                heatmap.options.set('radius', 50); // Радиус тепловых зон
+            });
+
+            // Добавление маркеров для каждого здания
+            buildings.forEach(building => {
+                var placemark = new ymaps.Placemark(building.coordinates, {
+                    balloonContent: `<strong>${building.name}</strong><br>Стоимость ремонта: ${building.repairCost}`
+                }, {
+                    preset: 'islands#icon', // Стандартный значок
+                    iconColor: '#0095b6'    // Цвет значка
+                });
+                myMap.geoObjects.add(placemark);
             });
         }
     </script>
