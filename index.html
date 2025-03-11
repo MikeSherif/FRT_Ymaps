@@ -7,7 +7,7 @@
     <script src="https://yastatic.net/s3/mapsapi-jslibs/heatmap/0.0.1/heatmap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="style/reset.css">
     <link rel="stylesheet" href="style/style.css">
-    <script src="app.js" type="text/javascript">
+    <script src="scripts/app.js" type="text/javascript">
 
     </script>
 </head>
@@ -16,61 +16,133 @@
     <!-- Кастомные элементы управления -->
     <aside class="custom-controls">
         <!-- Левый блок -->
-        <div class="left-panel">
-            <div class="panel-item">
-                <img src="assets/FRT_logo.svg" alt="Логотип компании Фонд Развития Территорий" style="padding-bottom: 5px">
+        <div class="custom-controls-left">
+            <!-- Левый подблок -->
+            <div class="left-panel">
+                <div class="panel-item">
+                    <img src="assets/FRT_logo.svg" alt="Логотип компании Фонд Развития Территорий" style="padding-bottom: 5px">
+                </div>
+                <div class="panel-item">
+                    <div class="panel-item-block">
+                        <input type="checkbox" class="custom-checkbox" checked>
+                        <img src="assets/home.svg" alt="Иконка дома">
+                        <span class="panel-item-block-name">Дома</span>
+                    </div>
+                    <div class="panel-item-block">
+                        <img src="assets/filter.svg" alt="Иконка фильтра">
+                        <img src="assets/more_vert.svg" alt="Иконка трех точек">
+                    </div>
+                </div>
+                <div class="panel-item">
+                    <div class="panel-item-block">
+                        <input type="checkbox" class="custom-checkbox" checked>
+                        <img src="assets/nest_heat.svg" alt="Иконка тепловой карты аварийных домов">
+                        <span class="panel-item-block-name">Тепловая карта аварийных домов</span>
+                    </div>
+                    <div class="panel-item-block">
+                        <img src="assets/filter.svg" alt="Иконка фильтра">
+                        <img src="assets/more_vert.svg" alt="Иконка трех точек">
+                    </div>
+                </div>
+                <div class="panel-item">
+                    <div class="panel-item-block">
+                        <input type="checkbox" class="custom-checkbox">
+                        <img src="assets/domain_add.svg" alt="Иконка проектов КРТ">
+                        <span class="panel-item-block-name">Проекты КРТ</span>
+                    </div>
+                    <div class="panel-item-block">
+                        <img src="assets/filter.svg" alt="Иконка фильтра">
+                        <img src="assets/more_vert.svg" alt="Иконка трех точек">
+                    </div>
+                </div>
             </div>
-            <div class="panel-item">
-                <div class="panel-item-block">
-                    <input type="checkbox" class="custom-checkbox" checked>
-                    <img src="assets/home.svg" alt="Иконка дома">
-                    <span class="panel-item-block-name">Дома</span>
+            <!-- Правый подблок -->
+            <div class="right-panel">
+                <!-- Кнопка скрытия/открытия -->
+                <button class="toggle-btn"><img  class="img-chevron" src="assets/chevron_left.svg" alt="Стрелка для закрытия и открытия левого меню"></button>
+                <!-- Группа кнопок -->
+                <div class="button-group">
+                    <button class="map-button">+</button>
+                    <button class="map-button"><img src="assets/my_location.svg" alt=""></button>
+                    <button class="map-button">-</button>
                 </div>
-                <div class="panel-item-block">
-                    <img src="assets/filter.svg" alt="Иконка фильтра">
-                    <img src="assets/more_vert.svg" alt="Иконка трех точек">
-                </div>
+                <!-- Отдельная кнопка -->
+                <button class="map-button"><img src="assets/near_me.svg"></button>
             </div>
-            <div class="panel-item">
-                <div class="panel-item-block">
-                    <input type="checkbox" class="custom-checkbox" checked>
-                    <img src="assets/nest_heat.svg" alt="Иконка тепловой карты аварийных домов">
-                    <span class="panel-item-block-name">Тепловая карта аварийных домов</span>
-                </div>
-                <div class="panel-item-block">
-                    <img src="assets/filter.svg" alt="Иконка фильтра">
-                    <img src="assets/more_vert.svg" alt="Иконка трех точек">
-                </div>
-            </div>
-            <div class="panel-item">
-                <div class="panel-item-block">
-                    <input type="checkbox" class="custom-checkbox">
-                    <img src="assets/domain_add.svg" alt="Иконка проектов КРТ">
-                    <span class="panel-item-block-name">Проекты КРТ</span>
-                </div>
-                <div class="panel-item-block">
-                    <img src="assets/filter.svg" alt="Иконка фильтра">
-                    <img src="assets/more_vert.svg" alt="Иконка трех точек">
-                </div>
-            </div>
-        </div>
-
-        <!-- Правый блок -->
-        <div class="right-panel">
-            <!-- Кнопка скрытия/открытия -->
-            <button class="toggle-btn"><img  class="img-chevron" src="assets/chevron_left.svg" alt="Стрелка для закрытия и открытия левого меню"></button>
-
-            <!-- Группа кнопок -->
-            <div class="button-group">
-                <button class="map-button">+</button>
-                <button class="map-button"><img src="assets/my_location.svg" alt=""></button>
-                <button class="map-button">-</button>
-            </div>
-
-            <!-- Отдельная кнопка -->
-            <button class="map-button"><img src="assets/near_me.svg"></button>
         </div>
     </aside>
+
+    <!--Центральный блок-->
+    <div class="custom-controls-center">
+        <div class="real-estate-search-controls">
+            <div class="real-estate-search-controls-region_choose">
+                <!--<select class="region-select" id="region-select">
+                  <option value="" disabled selected>Выбор региона</option>
+                  <option value="moscow">Московская область</option>
+                  <option value="rostov">Ростовская область</option>
+                  <option value="kemerovo">Кемеровская область</option>
+                  <div>Lolhghf</div>
+                </select>-->
+                <div class="select">
+                    <div class="select__header">
+                        <span class="select__current">Выбор региона</span>
+                        <div class="select__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="31" height="41"
+                                 viewBox="0 0 31 41" fill="none">
+                                <rect width="31" height="41" fill="url(#pattern0_363_672)" style=""/>
+                                <defs>
+                                    <pattern id="pattern0_363_672" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                        <use xlink:href="#image0_363_672" transform="matrix(0.00165323 0 0 0.00125 -0.16129 0)"/>
+                                    </pattern>
+                                    <image id="image0_363_672" width="800" height="800"
+                                           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAyAAAAMgCAYAAADbcAZoAAAgAElEQVR4Ae3db6hs62HX8Z2kSLEVIdI/ERqiCc05a2Iw3pyz5qYQA76wiFhaEZVailSwLRT0lbFYe8TmrHXu1aQFib7xhZQq9oXUBkQoWKFQFQmtKbkX/APV+EokpVrxT9tss2bvtffM7H8zs9fM+q31fAJhztl79sxan3meZz3fO3uffXbmfwQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABApMXqF5r31stX9ZPnzff+bRufrB63v7w0+evvu9p/fKPVc/e+IPv/9ib3zj5k3QCBAgQIECAAAECBE4g8KH6U9/U7aG7vXS3p17trevmB7u9drfn/tCzH/uWExxGxlMsXv/0uxfLV9+7qNt/tKibf1ctm/+2WLbnO/+/br9U1c2/XiybTy+et38046wcBQECBAgQIECAAIFxBBbPmm9f1O2Pr/bIdfulnffVy/Z8tRev21+u6vYnq2Xz3d1efZyzGPRZz9/xweevPrqomx+p6vZfVXXz2/ugPHjfuv2NxbL92ep58/1Fldygr5EHI0CAAAECBAgQmIpAt+d9umx/YLFsPreom//14H55j//Y3+3Vq7r5xafL9q89qZvXzs7O3zEVl9VxVs+bP7VYNm/fiVJfvPNR1c15dQnT3/ZfU13ep/t797nV59c+1t+vv62W7T+rPtp8ZFJQDpYAAQIECBAgQIDAAwJPl2/8oW6v2+97b94254u1fXX3+fW99Orva3vubg++eoz79tZ188VuT//AoY3/6SfLV99VLdsvrKNcnOBFaGxHxvr9dv1z/xgXQXKJ14PW7VcWy+afLOqX1fgajoAAAQIECBAgQIDA4QJPXm//QFW3P3PbPnljT7zHOx13PdbF4zXnV3HSP2bd/vJi+fJPHH4WR/rKqm6/46v//6X1E1pVV335zkV/Ase4vXyOWyrvpz740VcfPNIpe1gCBAgQIECAAAECRxHo9rDVsv3HN/bW3V76nnct1u9/6J+r5atb3x3p9vpPnr/840c54X0etPth8IsfDL/+YfK+xg496UO/rguQ7ee++F629ic/+PzN37fPebkvAQIECBAgQIAAgVMLLF5vPlAt25/a+Nnp7tulun3ukcPjtj14FyPVcvs7jppfrJ69+iOntvnq871456Ju/8H6gW4f3PrnTv7n7gXqv7ft4udH/s8kvodthFfSUxIgQIAAAQIECIwv8LRu/8yibv/f1b55az979fFjfEfRDo+5/R/6F8v2s10TnETu97724ncu6vafryOMUWTrz3/Xn1c/5H4ZIlXdfqWq20+eBMmTECBAgAABAgQIENhRYFG3f73fz96y0d/911bsEBL98xxyuzq2tXdiuh+M79pgx9M87G7dLzbpfodHf8Crdz3WDqL/eNzt2jFWdfP3z85++l2HCfgqAgQIECBAgAABAkMJ/PS71r+raPUfz/uf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IgREiAiJjxDxUcRa5CQJECBAgACBggREiAiJjRDxUdBK5FQJECBAgACBogREiAiJixDxUdQa5GQJECBAgACBAgVEiAiJiRDxUeAK5JQJECBAgACBIgVEiAgZPULER5Frj5MmQIAAAQIEChYQISJktAgRHwWvPE6dAAECBAgQKFpAhIiQESLks0VPOidPgAABAgQIEChdQISIkBNGiPgofcFx/gQIECBAgACBTkCEiJATRIj4sNwQIECAAAECBAhcC4gQEXLECBEf11PNnwgQIECAAAECBHoBESJCjhAh4qOfYG4JECBAgAABAgRuCogQETJghIiPm1PMRwgQIECAAAECBLYFRIgIGSBCxMf2xPJ3AgQIECBAgACBuwVEiAh5RISIj7unls8QIECAAAECBAjcJSBCRMgBESI+7ppQPk6AAAECBAgQIPCwgAgRIXtEiPh4eEq5BwECBAgQIECAwEMCIkSE7BAh4uOhieTzBAgQIECAAAECuwuIEBFyT4SIj92nknsSIECAAAECBAjsKiBCRMgtESI+dp1A7keAAAECBAgQILC/gAgRIWsRIj72n0K+ggABAgQIECBAYF8BESJCFstWfOw7cdyfAAECBAgQIEDgcAERUnSEiI/Dp46vJECAAAECBAgQOFRAhBQZIeLj0Anj6wgQIECAAAECBB4vIEKKihDx8fgp4xEIECBAgAABAgQeKyBCiogQ8fHYieLrCRAgQIAAAQIEhhPYjpC1fynp3J8nHyjiY7ip4pEIECBAgAABAgSGEtiMkMlvuoXTcvUaio+hJojHIUCAAAECBAgQGF5AhMwqvMTH8FPEIxIgQIAAAQIECAwtIEJmESHiY+iJ4fEIECBAgAABAgSOJyBCJh0h4uN4U8MjEyBAgAABAgQIHEtAhEwyQsTHsSaExyVAgAABAgQIEDi+gAiZVISIj+NPCc9AgAABAgQIECBwbAERMokIER/HnggenwABAgQIECBA4HQCIiQ6QsTH6aaCZyJAgAABAgQIEDiVgAiJjBDxcaoJ4HkIECBAgAABAgROLyBCoiJEfJx+CnhGAgQIECBAgACBUwuIkIgIER+nHviejwABAgQIECBAYDwBETJqhIiP8Ya+ZyZAgAABAgQIEBhLQISMEiHiY6wB73kJECBAgAABAgTGFxAhJ40Q8TH+kHcEBAgQIECAAAECYwsslu1nF8uTbsTPC3w+8TH2QPf8BAgQIECAAAECOQIi5KgBJj5yhrojIUCAAAECBAgQSBEQIUeJEPGRMsAdBwECBAgQIECAQJ6ACBk0QsRH3hB3RAQIECBAgAABAmkCImSQCBEfaQPb8RAgQIAAAQIECOQKiJBHRYj4yB3ajowAAQIECBAgQCBVQIQcFCHiI3VAOy4CBAgQIECAAIF8ARGyV4SIj/wh7QgJECBAgAABAgTSBUTIThEiPtIHsuMjQIAAAQIECBCYjoAIuTdCxMd0hrIjJUCAAAECBAgQmIqACLk1QsTHVAaw4yRAgAAB4ECcxwAADQBJREFUAgQIEJiegAjZiBDxMb0h7IgJECBAgAABAgSmJiBCVhEiPqY2cB0vAQIECBAgQIDAdAUKjxDxMd2h68gJECBAgAABAgSmKlBohIiPqQ5Yx02AAAECBAgQIDB9gcIiRHxMf8g6AwIECBAgQIAAgakLVHXzE4vl9Q9nV/X1n9c/Prk/18351THX7d+Z+uvk+AkQIECAAAECBAjMRmDjnZC6OZ9yhKyOfT0+lq13PmYzUp0IAQIECBAgQIDAbASqun1z7R2D63cP1t4dufp88sfW3sHpzmk2L5ATIUCAAAECBAgQIDA3gWrZfPdi2fxmFxrVxN4JqS6P+SKSmt+s6ld/fm6vj/MhQIAAAQIECBAgMDuBJ8/aj1V189/7dzuq5drPUoS+87F5jM2Xu3OY3QvjhAgQIECAAAECBAjMVeBDz37sWxbL5u0+QnJvX63eqbk+vubtJ8vmfXN9XZwXAQIECBAgQIAAgdkKVNWLr6+Wzc9db+67fx2rezfkVcDPh3THsPnOTHes3THP9gVxYgQIECBAgAABAgTmL3D+jqpu/9yibv5LHyLdvzLV/bxF//dT3178rMfa89ftl57WL7/n7Oz8HfN/PZwhAQIECBAgQIAAgQIE3ve+F19b1c1frZbt/7gOjuYyRE7xjsir84uf87h+16M7lup5+8PdsRXwEjhFAgQIECBAgAABAuUJfOAjL7+hWjZ/d7Fsf+s6RC7eEel/d8gQ7470j7H6l7huvtvyW1Xd/r3uWMp7BZwxAQIECBAgQIAAgQIFnjx/+a2LZfO59QhZ/3MfEP3HqmX3DsZlqNy43XwHZftr+8e4uG0+1z13geROmQABAgQIECBAgACB6rX2vdXz5vuruv2ZzW/PWvsZjZvvYOz88yPVsvmfVd3806fL9ge65yJOgAABAgQIECBAgACBC4FPvPiaJ6+/8Yerum2quv2lqm6/svnuxcNR0n3N5dc2T5bNJ84+8eJr8BIgQIAAAQIECBAgQGAngaevfeo9Tz/6qQ89fdZ+/Mny1Xc9XTZ/YbFs/kr3/+7Pq489az++us9rn3rPTg/qTgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgMDBAv8fPvbFK5cCcmEAAAAASUVORK5CYII="/>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="select__body">
+                        <div class="select__item-list">
+                            <div class="select__item">Московская область</div>
+                            <div class="select__item">Московская область</div>
+                            <div class="select__item">Московская область</div>
+                            <div class="select__item">Ростовская область</div>
+                            <div class="select__item">Ленинградская область</div>
+                            <div class="select__item">Кемеровская область область область область Ростов на Дону</div>
+                            <div class="select__item">Новосибирская область</div>
+                            <div class="select__item">Новосибирская область</div>
+                            <div class="select__item">Новосибирская область</div>
+                            <div class="select__item">Новосибирская область</div>
+                            <div class="select__item">Новосибирская область</div>
+                            <div class="select__item">Новосибирская область</div>
+                            <div class="select__item">Новосибирская область</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Правый блок-->
+    <div class="custom-controls-right">
+        <div class="custom-controls-group-first">
+            <button class="map-button"><img src="assets/search_icon.svg" alt="Иконка поиска"></button>
+            <button class="map-button"><img src="assets/menu_icon.svg" alt="Иконка меню"></button>
+        </div>
+        <div class="custom-controls-group-second">
+            <button class="map-button"><img src="assets/layers_icon.svg" alt="Иконка слоев"></button>
+            <button class="map-button"><img src="assets/more_horiz.svg" alt="Иконка трех горизонтальных точек"></button>
+            <button class="map-button"><img src="assets/download_icon.svg" alt="Иконка загрузки"></button>
+            <button class="map-button"><img src="assets/palette_icon.svg" alt="Иконка палитры"></button>
+            <button class="map-button"><img src="assets/print_icon.svg" alt="Иконка принтера"></button>
+            <button class="map-button"><img src="assets/link_icon.svg" alt="Иконка ссылки"></button>
+        </div>
+        <div class="custom-controls-group-third">
+            <button class="map-button"><img src="assets/forum_icon.svg" alt="Иконка чата"></button>
+            <button class="map-button"><img src="assets/pie_chart_icon.svg" alt="Иконка круга с выделенной частью"></button>
+        </div>
+    </div>
 </div>
 </body>
 </html>

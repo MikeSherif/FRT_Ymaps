@@ -1,9 +1,16 @@
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 body {
     width: 100%;
     height: 100vh;
     margin: 0;
     padding: 0;
     color: #505050;
+    box-sizing: border-box;
 }
 
 #map {
@@ -16,8 +23,13 @@ body {
     top: 10px;
     left: 10px;
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
     z-index: 1000; /* Чтобы элементы были поверх карты */
+}
+
+.custom-controls-left {
+    display: flex;
+    gap: 10px;
 }
 
 /* Левый блок */
@@ -139,4 +151,170 @@ body {
 .left-panel.hidden {
     display: none;
     transition:all 1s ease-in;
+}
+
+.custom-controls-center {
+    position: absolute;
+    top: 10px;
+    left: 40%;
+    z-index: 10;
+}
+
+.real-estate-search-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.select {
+    font-family: "Montserrat", Montserrat, sans-serif;
+    position: relative;
+    width: 390px;
+    height: 50px;
+}
+
+.select.is-active .select__body {
+    width: 100%;
+    height: 189px;
+    display: flex;
+    align-items: center;
+    /*scrollbar-color: #2B3888 transparent;
+    scrollbar-shadow-color: #222222;*/
+}
+
+.select.is-chosen .select__header,  .select.is-chosen .select__current {
+    background: #FF6224;
+    color: #fff;
+}
+
+.select.is-chosen .select__icon {
+    fill: #fff;
+}
+
+.select.is-active .select__icon {
+    transform: rotate(180deg); /* Поворот на 180 градусов */
+    transform-origin: center center;
+}
+
+.select__header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 20px;
+    background: rgba(80, 80, 80, 0.7);
+}
+
+.select__current {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding-left: 10px;
+    width: 340px;
+    height: 100%;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -1px;
+    color: #2B3888;
+    border-radius: 20px;
+    /*border: 1px solid rgb(173, 173, 173);
+    border-radius: 20px;
+    ;*/
+}
+
+.select__icon {
+    box-sizing: border-box;
+    display: flex;
+    width: 33px;
+    height: 41px;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    margin-right: 15px;
+}
+
+.select__body {
+    background: #ffffff;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 20px;
+    display: none;
+    left: 0;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 78px;
+
+}
+
+.select__item-list {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    position: relative;
+    height: 171px;
+    width: 75%;
+    margin-left: 58px;
+    overflow: auto;
+}
+
+/* Ширина скроллбара */
+.select__item-list::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Фон скроллбара (трек) */
+.select__item-list::-webkit-scrollbar-track {
+    background: transparent;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 10px;
+    background-clip: padding-box;
+    padding: 1px;
+}
+
+/* Ползунок */
+.select__item-list::-webkit-scrollbar-thumb {
+    background: #2B3888;
+    padding: 1px
+}
+
+.select__item {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2B3888;
+}
+
+.select__item:hover {
+    background-color: #f2f2f2;
+}
+
+.custom-controls-group-first {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    position: absolute;
+    z-index: 10;
+    top: 30px;
+    right: 10px;
+}
+
+.custom-controls-group-second {
+    position: absolute;
+    z-index: 10;
+    top: 30%;
+    right: 10px;
+}
+
+.custom-controls-group-third {
+    position: absolute;
+    z-index: 10;
+    bottom: 60px;
+    right: 10px;
 }
