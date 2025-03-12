@@ -155,7 +155,7 @@ body {
 
 .custom-controls-center {
     position: absolute;
-    top: 10px;
+    top: 30px;
     left: 40%;
     z-index: 10;
 }
@@ -170,7 +170,6 @@ body {
     font-family: "Montserrat", Montserrat, sans-serif;
     position: relative;
     width: 390px;
-    height: 50px;
 }
 
 .select.is-active .select__body {
@@ -178,6 +177,8 @@ body {
     height: 189px;
     display: flex;
     align-items: center;
+    background: rgba(80, 80, 80, 0.7);
+    backdrop-filter: blur(3px);
     /*scrollbar-color: #2B3888 transparent;
     scrollbar-shadow-color: #222222;*/
 }
@@ -202,12 +203,11 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    padding: 15px 0;
     width: 100%;
-    height: 100%;
     border: 1px solid rgb(173, 173, 173);
-    border-radius: 20px;
+    border-radius: 10px;
     background: rgba(80, 80, 80, 0.7);
+    backdrop-filter: blur(3px);
 }
 
 .select__current {
@@ -233,7 +233,6 @@ body {
     box-sizing: border-box;
     display: flex;
     width: 33px;
-    height: 41px;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
@@ -241,15 +240,16 @@ body {
 }
 
 .select__body {
-    background: #ffffff;
-    border: 1px solid rgb(173, 173, 173);
+    background: #4e4e4e;
+    border: 1px solid rgba(173, 173, 173);
+    backdrop-filter: blur(3px);
     border-radius: 20px;
     display: none;
     left: 0;
     position: absolute;
     z-index: 1;
     right: 0;
-    top: 78px;
+    top: 48px;
 
 }
 
@@ -292,7 +292,7 @@ body {
 }
 
 .select__item:hover {
-    background-color: #f2f2f2;
+    color: #2c3a98;
 }
 
 .custom-controls-group-first {
