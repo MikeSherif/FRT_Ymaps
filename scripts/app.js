@@ -109,6 +109,25 @@ function init() {
         });
     }
 
+    // Функция переключения слоев карты
+    function layerControl() {
+        const layersButton = document.getElementById('map-button-layers');
+        const layerTypes = [
+            'yandex#map',      // Стандартный слой (карта)
+            'yandex#satellite', // Спутниковый слой
+            'yandex#hybrid'    // Гибридный слой (спутник + подписи)
+        ];
+        let currentLayerIndex = 0; // Индекс текущего слоя
+
+        layersButton.addEventListener('click', function() {
+            // Переключаем индекс слоя
+            currentLayerIndex = (currentLayerIndex + 1) % layerTypes.length;
+
+            // Устанавливаем новый слой
+            myMap.setType(layerTypes[currentLayerIndex]);
+        });
+    }
+
     function  Select() {
         let selectHeader = document.querySelectorAll('.select__header');
         let selectItem = document.querySelectorAll('.select__item');
@@ -145,6 +164,7 @@ function init() {
     let select = document.querySelector('.select');
     Select();
     zoomControl();
+    layerControl();
 }
 
 
