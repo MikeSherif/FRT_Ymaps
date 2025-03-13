@@ -123,7 +123,7 @@ function init() {
             // Переключаем индекс слоя
             currentLayerIndex = (currentLayerIndex + 1) % layerTypes.length;
 
-            // Устанавливаем новый слой
+            // Устанавливаем новый слой карты
             myMap.setType(layerTypes[currentLayerIndex]);
         });
     }
