@@ -177,7 +177,7 @@ body {
     height: 189px;
     display: flex;
     align-items: center;
-    background: rgba(80, 80, 80, 0.7);
+    background: rgba(80, 80, 80, 0.4);
     backdrop-filter: blur(3px);
     /*scrollbar-color: #2B3888 transparent;
     scrollbar-shadow-color: #222222;*/
@@ -206,7 +206,7 @@ body {
     width: 100%;
     border: 1px solid rgb(173, 173, 173);
     border-radius: 10px;
-    background: rgba(80, 80, 80, 0.7);
+    background: rgba(80, 80, 80, 0.4);
     backdrop-filter: blur(3px);
 }
 
@@ -292,7 +292,7 @@ body {
 }
 
 .select__item:hover {
-    color: #2c3a98;
+    color: #3d4aa1;
 }
 
 .custom-controls-group-first {

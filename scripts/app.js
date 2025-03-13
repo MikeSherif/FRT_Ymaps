@@ -93,6 +93,21 @@ function init() {
         leftPanel.classList.contains('hidden') ? imgChevron.setAttribute("src", "/assets/chevron_right.svg") : imgChevron.setAttribute("src", "/assets/chevron_left.svg");
     });
 
+    // Функция управления масштабом карты
+    function zoomControl() {
+        const zoomInButton = document.getElementById('map-button-zoom-in');
+        const zoomOutButton = document.getElementById('map-button-zoom-out');
+        //Увеличение масштаба
+        zoomInButton.addEventListener('click', function() {
+            const currentZoom = myMap.getZoom();
+            if (currentZoom < 21) myMap.setZoom(currentZoom + 1, { duration: 300 });
+        });
+        //Уменьшение масштаба
+        zoomOutButton.addEventListener('click', function() {
+            const currentZoom = myMap.getZoom();
+            if (currentZoom > 0) myMap.setZoom(currentZoom - 1, { duration: 300 });
+        });
+    }
 
     function  Select() {
         let selectHeader = document.querySelectorAll('.select__header');
@@ -126,12 +141,11 @@ function init() {
             select.classList.add('is-chosen');
         }
 
-    };
+    }
     let select = document.querySelector('.select');
     Select();
+    zoomControl();
 }
-
-//--------Работа с выпадающим списком
 
 
 
