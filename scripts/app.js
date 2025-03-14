@@ -10,7 +10,6 @@ function init() {
         controls: []
     });
 
-
     // Данные об аварийных зданиях
     var buildings = [
         { coordinates: [55.7558, 37.6173], name: "Здание 1", repairCost: "100 000 руб." },
@@ -199,10 +198,21 @@ function init() {
         });
     }
 
+    // Функция для печати карты
+    function printControl() {
+        const printButton = document.getElementById('map-button-print');
+
+        // Используем window.print() для печати карты
+        printButton.addEventListener('click', function() {
+            window.print();
+        });
+    }
+
     Select();
     zoomControl();
     layerControl();
     geolocationControl();
+    printControl();
 }
 
 
