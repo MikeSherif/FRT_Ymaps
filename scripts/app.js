@@ -1,11 +1,15 @@
 //---------Работа с картой---------
 ymaps.ready(init);
 function init() {
+    // Начальные параметры карты
+    const initialCenter = [55.76, 37.64]; // Москва, центр по умолчанию
+    const initialZoom = 10; // Начальный уровень масштаба
     var myMap = new ymaps.Map("map", {
-        center: [55.76, 37.64], // Центр карты (Москва)
-        zoom: 10,
+        center: initialCenter, // Центр карты (Москва)
+        zoom: initialZoom,
         controls: []
     });
+
 
     // Данные об аварийных зданиях
     var buildings = [
@@ -97,6 +101,7 @@ function init() {
     function zoomControl() {
         const zoomInButton = document.getElementById('map-button-zoom-in');
         const zoomOutButton = document.getElementById('map-button-zoom-out');
+        const zoomNormalizeButton = document.getElementById('map-button-zoom-normalize');
         //Увеличение масштаба
         zoomInButton.addEventListener('click', function() {
             const currentZoom = myMap.getZoom();
@@ -106,6 +111,11 @@ function init() {
         zoomOutButton.addEventListener('click', function() {
             const currentZoom = myMap.getZoom();
             if (currentZoom > 0) myMap.setZoom(currentZoom - 1, { duration: 300 });
+        });
+        //Возвращение к начальному масштабу
+        zoomNormalizeButton.addEventListener('click', function() {
+            // Возвращаем карту к начальному  масштабу с анимацией
+            myMap.setZoom(initialZoom);
         });
     }
 
@@ -161,10 +171,38 @@ function init() {
         }
 
     }
-    let select = document.querySelector('.select');
+
+    // Функция для кнопки геолокации
+    function geolocationControl() {
+        const geolocationButton = document.getElementById('map-button-geolocation-control');
+
+        geolocationButton.addEventListener('click', function() {
+            // Проверяем, поддерживает ли браузер геолокацию
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        // Получаем координаты пользователя
+                        const userCoords = [position.coords.latitude, position.coords.longitude];
+                        // Перемещаем карту к местоположению пользователя с зумом 14
+                        myMap.setCenter(userCoords, 14, { duration: 300 });
+                    },
+                    function(error) {
+                        // Обрабатываем ошибки геолокации
+                        console.error('Ошибка геолокации:', error);
+                        alert('Не удалось получить ваше местоположение. Проверьте настройки геолокации.');
+                    },
+                    { timeout: 10000 } // Таймаут 10 секунд
+                );
+            } else {
+                alert('Ваш браузер не поддерживает геолокацию.');
+            }
+        });
+    }
+
     Select();
     zoomControl();
     layerControl();
+    geolocationControl();
 }
 
 
